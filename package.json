@@ -1,0 +1,14 @@
+{
+  "name": "unity-smarthphone-remote-control",
+  "version": "1.0.0",
+  "description": "An example of how make connection between Unity and your smarthphone with socket.io",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Anthelme Dumont",
+  "license": "ISC",
+  "dependencies": {
+    "socket.io": "^0.9.17"
+  }
+}

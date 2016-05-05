@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>An example of how make connection between Unity and your smarthphone with socket.io</title>
+</head>
+
+<body>
+<div id="carSpeed" style="font-size: 20vh; text-align: center; line-height: 80vh; height: 100vh;">0</div>
+
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    var socket = io.connect('http://192.168.0.2:8080');
+
+    if (window.DeviceOrientationEvent) {
+        window.addEventListener("deviceorientation", function () {
+            emitY(round(event.gamma));
+            emitX(round(event.beta));
+        }, true);
+    } else if (window.DeviceMotionEvent) {
+        window.addEventListener('devicemotion', function () {
+            emitY(round(event.acceleration.y));
+            emitX(round(event.acceleration.x));
+        }, true);
+    }
+
+    socket.on('carSpeed', function (data) {
+        document.getElementById('carSpeed').innerHTML = data;
+    });
+
+    function emitY(data) {
+        socket.emit('deviceY', data);
+    }
+
+    function emitX(data) {
+        socket.emit('deviceX', data);
+    }
+
+    function round(value) {
+        return Math.round(value);
+    }
+</script>
+</body>
+</html>
