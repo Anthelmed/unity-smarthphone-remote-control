@@ -1,5 +1,5 @@
 # unity-smarthphone-remote-control
-An example of how make connection between Unity and your smarthphone with socket.io
+An example of how make connection between Unity and your smarthphone with nodejs and socket.io
 
 ##start
 
