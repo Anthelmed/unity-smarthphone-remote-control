@@ -43,4 +43,8 @@ public class SocketController : MonoBehaviour {
 	public void sendCarSpeed(object data) {
 		this.client.Emit("carSpeed", data);
 	}
+	
+	void OnApplicationQuit() {
+		this.client.Close();
+	}
 }
